@@ -3,7 +3,6 @@ import daisy from './images/gray/sm_daisy_nose_inc.jpg'
 import couple from './images/colored/sm_couple_col_inc.jpg'
 import { Link } from 'react-router-dom'
 import { getSavedOrders } from './Cart'
-import { CancelButton } from './Client_Infor'
 
 export class Commission extends React.Component{
     constructor(props){
@@ -24,8 +23,11 @@ export class Commission extends React.Component{
         let type = artType[id.slice(0,1)]
         let aSize = id.slice(2)
         let price = size[id]
-        this.setState(Object.assign({}, this.state,
-            {num: '', blur: 'blur', cost:{type, aSize, price}}))
+        this.setState(state =>({
+            ...state, num: '', blur: 'blur', cost:{type, aSize, price}
+        }))
+        // this.setState(Object.assign({}, this.state,
+        //     {}))
     }
     cancelOrder(){
         this.setState(state =>({...state, num: 'num', blur: '', 

@@ -19,10 +19,8 @@ export class ClientInformation extends React.Component{
         return(
             <>
             {
-            // this.state.navigate ? <Navigate to={this.state.navigate} /> :
             <div  className="client-infor">
                 <CancelButton />
-                {/* <Navigate to="/commission" replace={true} /> */}
                 <h2>Contact Information</h2>
                 <p>You will contacted to send photo(s) to be drawn and 50%
                     downpayment. The balance will be cleared on delivery.
@@ -65,14 +63,13 @@ const ContactForm = (props) =>{
                 })
                 .catch((err)=>{
                     clearTimeout(submitDelay);
-                    props.onHandleState({btnContent:"Failed", loader: "load", 
-                        disabled: false, navigate: "/contact",
+                    props.onHandleState({btnContent:"Failed to Submit", loader: "load", 
+                        disabled: true, navigate: "/contact",
                     })         
-            // contactPop.querySelector('p').innerHTML = 'We apologize, your order has not been fullfilled. Kindly contact us directly to complete your order'
-            })
+                })
             const submitDelay = setTimeout(()=>{
                 props.onHandleState({btnContent:"Time Out", loader: "load", 
-                    disabled: false, navigate: "/contact", })
+                    disabled: true, navigate: "/contact", })
             },10000)
         }
     }

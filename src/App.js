@@ -4,7 +4,7 @@ import { LandingPage } from './pages/Landing_page';
 import { Header } from './pages/Header';
 
 import { ThemeContext, themes } from './theme-context';
-import {ThemedButton} from './themed-button'
+import { ThemedButton } from './themed-button'
 import ThemeTogglerButton  from './theme-toggler-button';
 
 const NameContext = React.createContext("Derrick");
@@ -26,7 +26,6 @@ class App extends React.Component{
         //  </OrderTotalContext.Provider>
       )
     }
- 
   }
 }
 
@@ -35,15 +34,6 @@ function Content(){
     <ThemeTogglerButton />
   )
 }
-
-// function Greet() {
-//     return(
-//       <NameContext.Consumer>
-//         <p>hello</p>
-//         <p>{value => value}</p>
-//       </NameContext.Consumer>
-//     )
-//   }
 
 class Greet extends React.Component{
   
