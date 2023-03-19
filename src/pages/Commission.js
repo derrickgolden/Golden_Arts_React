@@ -26,8 +26,6 @@ export class Commission extends React.Component{
         this.setState(state =>({
             ...state, num: '', blur: 'blur', cost:{type, aSize, price}
         }))
-        // this.setState(Object.assign({}, this.state,
-        //     {}))
     }
     cancelOrder(){
         this.setState(state =>({...state, num: 'num', blur: '', 
