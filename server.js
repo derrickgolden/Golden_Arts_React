@@ -14,6 +14,7 @@ const server = http.createServer(app);
 app.use(cors())
 app.use(express.json({limit: "25mb"}))
 app.use(express.urlencoded({limit: "25mb"}))
+console.log(path.join(__dirname,"./build"))
 app.use(express.static(path.join(__dirname,"./build")))
 app.use((req,res,next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -56,6 +57,12 @@ app.use((req,res,next) => {
         .then(data => res.send(data.success))
         .catch(error => res.status(500).send(error.error))
     })
+
+    // All other GET requests not handled before will return our React app
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '/build', 'index.html'));
+    });
+
     app.post("/send_email",(req,res) =>{
         console.log("sending email")
         sendmail(req.body)
