@@ -4,12 +4,21 @@ import nyeri from './images/colored/Nyeri_View.jpg'
 import kid from './images/gray/Kid_hand_pic.jpg'
 
 export class Biography extends React.Component{
+    state = null;
+
+    requestApi = () =>{
+    // React.useEffect(() => {
+      fetch("/api")
+        .then((res) => res.json())
+        .then((data) => this.setState(data.message));
+    // }, []);
+  }
     render(){
         return(
             <>
             <div className="bio-container">
                 <section className="bio-section">
-                    <h2>Biography</h2>
+                    <h2>{this.state}</h2>
                     <div className="about bio-image about-derrick">
                         <img src={photo} alt="" />
                         <div className="about-derrick-text">

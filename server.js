@@ -58,6 +58,11 @@ app.use((req,res,next) => {
         .catch(error => res.status(500).send(error.error))
     })
 
+    app.get("/api", (req, res) => {
+        console.log("api log")
+        res.json({ message: "Hello from server twice!" });
+      });
+
     // All other GET requests not handled before will return our React app
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, '/build', 'index.html'));
