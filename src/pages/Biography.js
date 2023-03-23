@@ -18,7 +18,7 @@ export class Biography extends React.Component{
             <>
             <div className="bio-container">
                 <section className="bio-section">
-                    <h2>{this.state}</h2>
+                    <h2 onClick={this.requestApi}>{this.state? "Loading..." : this.state}</h2>
                     <div className="about bio-image about-derrick">
                         <img src={photo} alt="" />
                         <div className="about-derrick-text">
