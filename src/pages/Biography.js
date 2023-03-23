@@ -4,13 +4,16 @@ import nyeri from './images/colored/Nyeri_View.jpg'
 import kid from './images/gray/Kid_hand_pic.jpg'
 
 export class Biography extends React.Component{
-    state = null;
+    state = {message: null};
 
     requestApi = () =>{
     // React.useEffect(() => {
       fetch("/api")
         .then((res) => res.json())
-        .then((data) => this.setState(data.message));
+        .then((data) => {
+            console.log(data);
+            this.setState(data);
+        })
     // }, []);
   }
     render(){
@@ -18,7 +21,7 @@ export class Biography extends React.Component{
             <>
             <div className="bio-container">
                 <section className="bio-section">
-                    <h2 onClick={this.requestApi}>{this.state? "Loading..." : this.state}</h2>
+                    <h2 onClick={this.requestApi}>{!this.state.message? "Loading..." : this.state.message}</h2>
                     <div className="about bio-image about-derrick">
                         <img src={photo} alt="" />
                         <div className="about-derrick-text">
