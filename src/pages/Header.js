@@ -7,7 +7,8 @@ import { Commission } from './Commission'
 import { Contact } from './Contact'
 import { Cart, getSavedOrders } from './Cart'
 import { ClientInformation } from './Client_Infor'
-// import { OrderTotalContext } from './Landing_page'
+
+export const OrderTotalContext = React.createContext()
 
 export class Header extends React.Component{
     state = {height: "", orderTotal: getSavedOrders().orders.length,}
@@ -30,8 +31,8 @@ export class Header extends React.Component{
                     <NavBarr height={this.state.height}  orderTotal={this.state.orderTotal}/>
                 </div>
                 <Routes>
-                    
-                    <Route path='/' element={<LandingPage />} />
+                    <Route path='/home' element={<LandingPage />} />
+                    <Route path='/' element={<Gallery artType="gray"/>} />
                     <Route path='/gallery' >
                         <Route path='gray' element={<Gallery artType="gray"/>} />
                         <Route path='colored' element={<Gallery artType="colored"/>} />
@@ -42,7 +43,12 @@ export class Header extends React.Component{
                     <Route path='/cart' element = 
                         {<Cart updateTotalOrders={this.updateTotalOrders} /> } />
                     <Route path='/contact' element = {<Contact /> } />
-                    <Route path='/clientInfor' element= {<ClientInformation />} />
+                    <Route path='/clientInfor' element= {
+                        <OrderTotalContext.Provider value={this.updateTotalOrders} >
+                            <ClientInformation />
+                        </OrderTotalContext.Provider>
+                        // <ClientInformation updateTotalOrders={this.updateTotalOrders} />
+                        } />
                 </Routes>
                 {/* <!-- social media links --> */}
                 <footer className="footer-socials" > { <Footer />}</footer>
@@ -61,6 +67,7 @@ const NavBarr = (props) =>{
     const onHideMenu = () =>{
         setToggleMenu({toggle: "toggle"})
     }
+    let screenWidth = window.screen.width
 
     return(
         <header className="home-container">
@@ -77,8 +84,9 @@ const NavBarr = (props) =>{
                             <i className="fa-solid fa-xmark cancel s-all"
                                 onClick={onHideMenu}></i>
                 <ul>
-                    <li><Link to="/" role="button" reloadDocument
-                        onClick={onHideMenu} >HOME</Link></li>        
+                    {screenWidth > 640? null :
+                        <li><Link to="/" role="button" reloadDocument
+                        onClick={onHideMenu} >HOME</Link></li> }      
                         <GallaryToggle onHandleHideMenu={onHideMenu}/>
                     <li><Link to="/biography" role="button"
                         onClick={onHideMenu} >BIOGRAPHY</Link></li>
@@ -111,16 +119,6 @@ const GallaryToggle = (props) =>{
                     </ul>
             </span >
         </li>
-        // <li className="inner-gallery" onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
-        //     <span style={{cursor: "default"}}  to="#" role="button"> GALLERY 
-        //             <ul style={display} id="display">
-        //                 <Link id="gray" to="/gallery/gray"
-        //                     onClick={props.onHandleHideMenu}>GRAY</Link>
-        //                 <Link id="col" to="/gallery/colored"
-        //                     onClick={props.onHandleHideMenu}>COLORED</Link>
-        //             </ul>
-        //     </span>
-        // </li>
     )
 }
 

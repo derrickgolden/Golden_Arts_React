@@ -3,7 +3,15 @@ import { useLocation } from 'react-router-dom'
 import { CancelButton } from './Client_Infor'
 
 export class Contact extends React.Component{
+    state = {copy: "copied"}
+    onHandleCopyNo = () =>{
+        navigator.clipboard.writeText("+254714475702")
+        this.setState({copy: null})
+        setTimeout(()=>{
+            this.setState({copy:"copied"})},2000)
+        }
     render(){
+        const classname = "direct copy-no " + this.state.copy;
         return(
             <div className=" contact-pop">
                 <CancelButton />
@@ -21,7 +29,7 @@ export class Contact extends React.Component{
                         <i className="fab fa-whatsapp" 
                             style={{color: "hsl(205, 77%, 27%)"}}></i></a>
                 </div>
-                <div className="direct copy-no copied">
+                <div onClick={this.onHandleCopyNo} className={classname}>
                     <span id="copied">Copied to clipboard</span>
                     <p>+254714475702 <i className="fa-regular fa-copy" 
                         style={{color: "hsl(205, 77%, 27%)"}}></i></p> 

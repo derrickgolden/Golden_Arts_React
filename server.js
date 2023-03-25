@@ -3,14 +3,33 @@ const express = require('express');
 const nodemailer = require('nodemailer')
 const http = require('http');
 const cors = require('cors');
+const socketIo = require('socket.io');
 const path = require('path')
 
 const PORT = process.env.PORT || 8080;
 
 const app = express()
 const server = http.createServer(app);
+const io = socketIo(server);
 
 // setting up the sockets
+io.on('connection', async (socket)=>{
+    console.log("client connected")
+    socket.on('order',(order)=>{
+        const result = sendmail(order)
+        result.then(data =>{
+            if(/250 2.0.0 OK/.test(data.response)){
+                io.emit("success", {success: data.response})
+            }else{
+                io.emit("error", {error: "Failed"})
+            }
+            }).catch(err =>{
+                console.log(err)
+                io.emit("error", {error: "Failed"})
+        })
+    })
+})
+
 app.use(cors())
 app.use(express.json({limit: "25mb"}))
 app.use(express.urlencoded({limit: "25mb"}))
@@ -39,14 +58,10 @@ app.use((req,res,next) => {
             
             return result.then(data =>{
                 console.log(data.response)
-                if(/250 2.0.0 OK/.test(data.response)){
-                    return resolve({success: data.response})
-                }else{
-                    return reject({error: "Failed"})
-                }
+                return resolve(data);
                 }).catch(err =>{
                     console.log(err)
-                return reject({error: "Failed"})
+                return reject(err);
             })
         })
     }
@@ -54,7 +69,10 @@ app.use((req,res,next) => {
 
     app.get('/', (req,res) =>{
         sendmail("Hello")
-        .then(data => res.send(data.success))
+        .then(data => {
+            console.log(data)
+            res.send(data.success)
+        })
         .catch(error => res.status(500).send(error.error))
     })
 
@@ -68,10 +86,14 @@ app.use((req,res,next) => {
         res.sendFile(path.join(__dirname, '/build', 'index.html'));
     });
 
-    app.post("/send_email",(req,res) =>{
+    app.post("/send_email", (req,res) =>{
         console.log("sending email")
         sendmail(req.body)
-        .then(data => res.send(data.success))
+        .then(data => {
+            console.log(data)
+            console.log(data.success)
+            res.send(data.success)
+        })
         .catch(error => res.status(500).send(error.error))
     })
 server.listen(PORT,()=>console.log("Listening on port", PORT))

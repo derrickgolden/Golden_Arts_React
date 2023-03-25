@@ -6,16 +6,22 @@ import photo from './images/Artist_photo.jpg'
 
 export class LandingPage extends React.Component{
     render(){
-        console.log(window.screen.width)
-        return(
-                    <Routes>
-                        <Route path="*" element={<LinksMenu />} ></Route>
-                        <Route path="/gallery/gray" element={<Header />} ></Route>
-                        <Route path="/biography" element={<Header />} ></Route>
-                        <Route path="/commission" element={<Header />} ></Route>
-                        <Route path="/contact" element={<Header />} ></Route>
-                    </Routes>
-
+        let screenWidth = window.screen.width
+            return(
+                <>
+                {screenWidth < 640 ?
+                <Routes>
+                    <Route path="*" element={<LinksMenu />} ></Route>
+                    <Route path="/gallery/gray" element={<Header />} ></Route>
+                    <Route path="/biography" element={<Header />} ></Route>
+                    <Route path="/commission" element={<Header />} ></Route>
+                    <Route path="/contact" element={<Header />} ></Route>
+                </Routes> :
+                <Routes>
+                    <Route path="*" element={<Header />} />
+                </Routes>
+                }
+                </>
         )
     }
 }

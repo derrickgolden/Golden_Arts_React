@@ -9,7 +9,10 @@ export class Biography extends React.Component{
     requestApi = () =>{
     // React.useEffect(() => {
       fetch("/api")
-        .then((res) => res.json())
+        .then((res) => {
+            console.log(res);
+            return res.json()
+        })
         .then((data) => {
             console.log(data);
             this.setState(data);
@@ -21,7 +24,7 @@ export class Biography extends React.Component{
             <>
             <div className="bio-container">
                 <section className="bio-section">
-                    <h2 onClick={this.requestApi}>{!this.state.message? "Loading..." : this.state.message}</h2>
+                    <h2 onClick={this.requestApi}>{!this.state.message? "Biography" : this.state.message}</h2>
                     <div className="about bio-image about-derrick">
                         <img src={photo} alt="" />
                         <div className="about-derrick-text">

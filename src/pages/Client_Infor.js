@@ -4,6 +4,8 @@ import axios from 'axios'
 import { useNavigate} from "react-router-dom"
 import { Notification } from "./Commission"
 import { getSavedOrders } from "./Cart"
+import { OrderTotalContext } from "./Header"
+// const socket = io();
 
 export class ClientInformation extends React.Component{
     state = {validNo:"", btnContent: "Submit", loader: "load", 
@@ -36,6 +38,7 @@ export class ClientInformation extends React.Component{
 
 const ContactForm = (props) =>{
     const {validNo, btnContent, loader, disabled, navigate} = props.state
+    const updateCart = React.useContext(OrderTotalContext);
     let className = loader +" loader"
     const handleClientInfor=(e)=>{
             e.preventDefault();
@@ -50,11 +53,13 @@ const ContactForm = (props) =>{
                 sessionStorage.setItem("clientDetails", JSON.stringify({no, name})) 
                 
                 const orders = getSavedOrders().orders;
+                
                 axios
                     .post("http://localhost:8080/send_email",{
                     no, name, orders
                 }).then(()=> {
                     localStorage.removeItem("newdom")
+                    updateCart(0);
                     clearTimeout(submitDelay);
                     props.onHandleState({btnContent:"Submitted", loader: "load", 
                         disabled: false, navigate: "/gallery/gray",

@@ -1,9 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Notification } from './Commission';
-// import { OrderTotalContext } from '../App';
-
-// export const OrderTotalContext = React.createContext({orderTotal: 0})
 
 export class Cart extends React.Component{
     // static contextType = OrderTotalContext
@@ -46,8 +43,6 @@ export class Cart extends React.Component{
     }
     
     render(){
-        // let value = this.props;
-        console.log( this.state.orders)
         return(
             <>
                 {this.state.orders.length? <FilledCart orders={this.state.orders}/>: <EmptyCart />}
@@ -56,7 +51,6 @@ export class Cart extends React.Component{
         )
     }
 }
-// Cart.contextType = OrderTotalContext;
 
 const EmptyCart = () =>(
     <div className="emp-cart ">

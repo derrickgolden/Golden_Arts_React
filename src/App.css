@@ -484,7 +484,8 @@ li> a:hover::after{
 }
 .contact-pop{
   background-color: #fff;
-  padding: 1rem;
+  padding: 1rem 1rem 2rem 1rem;
+  /* margin-bottom: 2rem; */
   width: 22rem;
   height: auto;
   border-radius: 5px;
