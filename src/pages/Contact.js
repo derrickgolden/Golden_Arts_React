@@ -11,8 +11,11 @@ export class Contact extends React.Component{
             this.setState({copy:"copied"})},2000)
         }
     render(){
+        let screenWidth = window.screen.width
         const classname = "direct copy-no " + this.state.copy;
         return(
+            <div className={screenWidth > 640? " contact-pop-img": ""}>
+                
             <div className=" contact-pop">
                 <CancelButton />
                 <Message />
@@ -34,6 +37,7 @@ export class Contact extends React.Component{
                     <p>+254714475702 <i className="fa-regular fa-copy" 
                         style={{color: "hsl(205, 77%, 27%)"}}></i></p> 
                 </div>
+            </div>
             </div>
         )
     }

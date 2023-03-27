@@ -7,6 +7,7 @@ import { Commission } from './Commission'
 import { Contact } from './Contact'
 import { Cart, getSavedOrders } from './Cart'
 import { ClientInformation } from './Client_Infor'
+import { JourneyImages } from './Gallery'
 
 export const OrderTotalContext = React.createContext()
 
@@ -46,9 +47,8 @@ export class Header extends React.Component{
                     <Route path='/clientInfor' element= {
                         <OrderTotalContext.Provider value={this.updateTotalOrders} >
                             <ClientInformation />
-                        </OrderTotalContext.Provider>
-                        // <ClientInformation updateTotalOrders={this.updateTotalOrders} />
-                        } />
+                        </OrderTotalContext.Provider> } />
+                    <Route path="/journeyimages" element={<JourneyImages />} ></Route>
                 </Routes>
                 {/* <!-- social media links --> */}
                 <footer className="footer-socials" > { <Footer />}</footer>
@@ -109,14 +109,14 @@ const GallaryToggle = (props) =>{
         setDisplay({display:"none"})
     }
     return(
-        <li className="inner-gallery" onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
-            <span id='toggle-gallery' style={{cursor: "default"}} > GALLERY 
-                    <ul style={display} id="display">
-                        <Link id="gray" to="/gallery/gray"
-                            onClick={props.onHandleHideMenu}>GRAY</Link>
-                        <Link id="col" to="/gallery/colored"
-                            onClick={props.onHandleHideMenu}>COLORED</Link>
-                    </ul>
+        <li className="inner-gallery" onClick={onMouseOver} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
+            <span id='toggle-gallery' style={{cursor: "default"}} > GALLERY
+                <ul style={display} id="display">
+                    <Link id="gray" to="/gallery/gray"
+                        onClick={props.onHandleHideMenu}>GRAY</Link>
+                    <Link id="col" to="/gallery/colored"
+                        onClick={props.onHandleHideMenu}>COLORED</Link>
+                </ul>
             </span >
         </li>
     )

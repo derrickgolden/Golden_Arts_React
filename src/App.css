@@ -78,6 +78,10 @@ body{
   width: 100%;
   margin: 1rem 0;
 }
+.images-btns{
+  margin: 0 auto 1rem auto ;
+  width: 20rem;
+}
 .link-btns > *{
   margin: .5rem auto;
   padding:.5rem;
@@ -391,7 +395,7 @@ li> a:hover::after{
 .gallery-images img{
   width: 22rem;
   height: 30rem;
-  margin: 1rem 0;
+  margin-top: 1rem;
   border: 2px solid rgb(192, 190, 190);
 }
 .landscape{
@@ -501,6 +505,12 @@ li> a:hover::after{
   transform: translate(-50%);
   transition: var(--transition);
   line-height: 1.5;
+}
+.contact-pop-img{
+  background-image: url("./pages/images/IMG_20220808_075702.jpg");
+  background-size: contain;
+  width: 100%;
+  height: 110vh;
 }
 
 #copied{

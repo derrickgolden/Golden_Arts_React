@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, Route, Routes } from 'react-router-dom'
 import { Header } from "./Header";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 import photo from './images/Artist_photo.jpg'
 
@@ -21,6 +23,7 @@ export class LandingPage extends React.Component{
                     <Route path="*" element={<Header />} />
                 </Routes>
                 }
+                {/* <ScrollRestoration /> */}
                 </>
         )
     }
@@ -64,4 +67,14 @@ const LinksMenu = () =>{
             </div>
         </>
     )
+}
+
+export const ScrollToTop = () =>{
+    const {pathname} = useLocation()
+    useEffect(()=>{
+        document.documentElement.scrollTo({
+            top: 0, left: 0, behavior: "instant",
+        })
+    },[pathname])
+    return null
 }

@@ -1,25 +1,31 @@
 {
   "files": {
-    "main.css": "/static/css/main.52f325b7.css",
-    "main.js": "/static/js/main.1ddd53ce.js",
+    "main.css": "/static/css/main.2dc91344.css",
+    "main.js": "/static/js/main.96951dc2.js",
     "static/js/787.9b532078.chunk.js": "/static/js/787.9b532078.chunk.js",
+    "static/media/DSCN0115.JPG": "/static/media/DSCN0115.b7ef87e604457e44ca93.JPG",
+    "static/media/DSCN0070.JPG": "/static/media/DSCN0070.2e4ed3b535fe5087f09c.JPG",
+    "static/media/DSCN0088.JPG": "/static/media/DSCN0088.efa207e8fe356853af69.JPG",
     "static/media/Nyeri_View.jpg": "/static/media/Nyeri_View.a0bf8ab621b7f38949dd.jpg",
+    "static/media/IMG_20220808_075702.jpg": "/static/media/IMG_20220808_075702.f4ecb677398e9399bc7a.jpg",
+    "static/media/IMG_20211218_182433.jpg": "/static/media/IMG_20211218_182433.d61d412ead3804672bbc.jpg",
     "static/media/Kid_hand_pic.jpg": "/static/media/Kid_hand_pic.dfa3c3c5629cd379bfda.jpg",
     "static/media/sm_cheetah_col.jpg": "/static/media/sm_cheetah_col.0d406f349bbf7c1d0824.jpg",
     "static/media/sm_SA_family_paint_comp.jpg": "/static/media/sm_SA_family_paint_comp.a2096fc3dc12c1badcc0.jpg",
     "static/media/sm_couple_col_inc.jpg": "/static/media/sm_couple_col_inc.66d9827f11a45770589d.jpg",
     "static/media/sm_couple_col_comp.jpg": "/static/media/sm_couple_col_comp.360589caf821b8e9ac67.jpg",
     "static/media/sm_lady_col_inc.jpg": "/static/media/sm_lady_col_inc.b8fd493c78c70071d241.jpg",
-    "static/media/sm_betty_complete.JPG": "/static/media/sm_betty_complete.2473d7585f0997302b39.JPG",
+    "static/media/sm_Betty-Kyallo_complete.JPG": "/static/media/sm_Betty-Kyallo_complete.2473d7585f0997302b39.JPG",
     "static/media/sm_leop_monkey_col.jpg": "/static/media/sm_leop_monkey_col.40e27b184a455f9844bc.jpg",
     "static/media/sm_lady1_col.jpg": "/static/media/sm_lady1_col.9555e35abf5dad7c6630.jpg",
     "static/media/sm_mzungu_family_col.jpg": "/static/media/sm_mzungu_family_col.641dec3a1086737afb8b.jpg",
     "static/media/sm_cynthia_comp.jpg": "/static/media/sm_cynthia_comp.b60e41fb73f19e233cfc.jpg",
-    "static/media/sm_twin_kid_complete.JPG": "/static/media/sm_twin_kid_complete.eae0a16196a74f3275f5.JPG",
+    "static/media/sm_Innocence_complete.JPG": "/static/media/sm_Innocence_complete.eae0a16196a74f3275f5.JPG",
+    "static/media/sm_Black-Beauty_comp.jpg": "/static/media/sm_Black-Beauty_comp.7e6780559da06ec49a54.jpg",
     "static/media/sm_winnie_comp.jpg": "/static/media/sm_winnie_comp.7e6780559da06ec49a54.jpg",
     "static/media/sm_couple_paint_comp.jpg": "/static/media/sm_couple_paint_comp.eea66004db1915a38b94.jpg",
     "static/media/sm_prision_col_comp.jpg": "/static/media/sm_prision_col_comp.826f32899ae7a1492b0f.jpg",
-    "static/media/sm_law_kid_comp.jpg": "/static/media/sm_law_kid_comp.c0bc50235dbf23f0f323.jpg",
+    "static/media/sm_Tigeress-Eye_comp.jpg": "/static/media/sm_Tigeress-Eye_comp.c0bc50235dbf23f0f323.jpg",
     "static/media/sm_nigeria_family_paint_comp.jpg": "/static/media/sm_nigeria_family_paint_comp.1af56872ec8b94e21476.jpg",
     "static/media/sm_daisy_nose_inc.jpg": "/static/media/sm_daisy_nose_inc.4e5a9522e5da2490af0e.jpg",
     "static/media/sm_daisy_comp.jpg": "/static/media/sm_daisy_comp.4c5618c5a4843c6e1469.jpg",
@@ -31,12 +37,12 @@
     "static/media/sm_kinoti_wall_col.jpg": "/static/media/sm_kinoti_wall_col.b823c106442653b59e38.jpg",
     "static/media/sm_shark_lady_col.jpg": "/static/media/sm_shark_lady_col.f9bdee67e9ce04db3b4d.jpg",
     "index.html": "/index.html",
-    "main.52f325b7.css.map": "/static/css/main.52f325b7.css.map",
-    "main.1ddd53ce.js.map": "/static/js/main.1ddd53ce.js.map",
+    "main.2dc91344.css.map": "/static/css/main.2dc91344.css.map",
+    "main.96951dc2.js.map": "/static/js/main.96951dc2.js.map",
     "787.9b532078.chunk.js.map": "/static/js/787.9b532078.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.52f325b7.css",
-    "static/js/main.1ddd53ce.js"
+    "static/css/main.2dc91344.css",
+    "static/js/main.96951dc2.js"
   ]
 }

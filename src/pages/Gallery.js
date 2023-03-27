@@ -1,87 +1,109 @@
 import React from 'react'
-
-import couple from "./images/colored/sm_couple_col_comp.jpg" 
-import photo1 from "./images/colored/sm_prision_col_comp.jpg" 
-import lady from "./images/colored/sm_lady_col_inc.jpg" 
-import leopard from "./images/colored/sm_leop_monkey_col.jpg" 
-import cheetah from "./images/colored/sm_cheetah_col.jpg" 
-import shark from "./images/colored/sm_shark_lady_col.jpg" 
-import lady1 from "./images/colored/sm_lady1_col.jpg"
-import mzungu from "./images/colored/sm_mzungu_family_col.jpg"
-import kinoti from "./images/colored/sm_kinoti_wall_col.jpg"
-
-import betty from "./images/gray/sm_betty_complete.JPG"
-import twinKid from "./images/gray/sm_twin_kid_complete.JPG"
-import lawKid from "./images/gray//sm_law_kid_comp.jpg"
-import cynthia from "./images/gray/sm_cynthia_comp.jpg"
-import daisy from "./images/gray/sm_daisy_comp.jpg"
-import winnie from "./images/gray/sm_winnie_comp.jpg"
-
-import dadSon from "./images/gray/sm_dad_son_paint_complete.jpg"
-import couple1 from "./images/gray/sm_couple_paint_comp.jpg"
-import sunFace from "./images/gray/sm_sun_face_paint_comp.jpg"
-import qatar from "./images/gray/sm_qatar_paint_comp.jpg"
-import nigeriaFamily from "./images/gray/sm_nigeria_family_paint_comp.jpg" 
-import SA_Family from "./images/gray/sm_SA_family_paint_comp.jpg" 
-            
+import { Link, useLocation, useNavigate, } from 'react-router-dom'
+import { art } from './images'
+import { names } from './images'
 
 export class Gallery extends React.Component{
+    
     render(){ 
-        const type = this.props.artType === "gray"? <Gray />: <Colored />;
+        const type = this.props.artType === "gray"? <Gray />: <Colored  />;
             return(
-                <div>
-                    {/* <!-- gallery images --> */}
-                    <section className="gallery-section">
-                        <div className="gallery-img"> { type }
-                        </div>
-                    </section>   
-                </div>
+                <>
+                    <div>
+                        {/* <!-- gallery images --> */}
+                        <section className="gallery-section">
+                            <div className="gallery-img"> { type } </div>
+                        </section>   
+                    </div> 
+                </>
             )        
     }
 }
 
-const Colored = () =>(
+const Colored = (props) =>{
+    return(
 <>
     <h3 className="art-type">COLORED PAINTINGS</h3>
     <div className="gallery-images">
-        <div><img src= {couple} alt="COLORED PAINTING" /></div>
-        <div><img src= {photo1} alt="COLORED PAINTING" /></div>
-        <div><img src= {lady} alt="COLORED PAINTING" /></div>
-        <div><img src= {leopard} alt="COLORED PAINTING" /></div>
-        <div><img src= {cheetah} alt="COLORED PAINTING" /></div>
-        <div><img src= {shark} alt="COLORED PAINTING" /></div>
-        <div className="Lscape3 Lscape">
-            <img className="landscape" src= {lady1} alt="COLORED PAINTING" /></div>
-        <div className="Lscape4 Lscape">
-            <img className="landscape" src={mzungu} alt="COLORED PAINTING" /></div>
-        <div className="Lscape5 Lscape">
-            <img className="landscape" src={kinoti} alt="COLORED PAINTING" /></div>
+        {art.coloredPaintings.colPaintingsPortrait.map((image,id) =>(
+            <ImageDom key={id} name = {image} description ="COLORED DRAWING" />
+        ))}
+        {art.coloredPaintings.colPaintingsLandscape.map((image, id) =>(
+            <ImageDom key={id} name={image} description="COLORED PAINTING"
+             landscape={true} />
+        ))}
     </div>
 </>
-)
-const Gray = () =>(
+)}
+
+const Gray = (props) =>{
+    
+    return(
     <>
     <h3 className="art-type">BLACK AND WHITE DRAWING(GRAY)</h3>
     <div className="gallery-images">
-        <div><img src={betty} alt="BLACK AND WHITE DRAWING" /></div>
-        <div><img src={twinKid} alt="BLACK AND WHITE DRAWING" /></div>
-        <div><img src={lawKid} alt="BLACK AND WHITE DRAWING" /></div>
-        <div><img src={cynthia} alt="BLACK AND WHITE DRAWING" /></div>
-        <div><img src={daisy} alt="BLACK AND WHITE DRAWING" /></div>
-        <div><img src={winnie} alt="BLACK AND WHITE DRAWING" /></div>
+        {art.grayDrawings.map((image,id) =>(
+            <ImageDom key={id} name = {image} description ="BLACK AND WHITE DRAWING" 
+            handleJourneyImages ={props.handleJourneyImages}/>
+        ))}
     </div>
     <h3 className="art-type">BLACK AND WHITE PAINTING(GRAY)</h3>
     <div className="gallery-images">
-        <div><img src={dadSon} alt="BLACK AND WHITE PAINTING" /></div>
-        <div><img src={couple1} alt="BLACK AND WHITE PAINTING" /></div>
-        <div><img src={sunFace} alt="BLACK AND WHITE PAINTING" /></div>
-        <div><img src={qatar} alt="BLACK AND WHITE PAINTING" /></div>
-        <div className="Lscape1 Lscape">
-            <img className="landscape" src={nigeriaFamily} 
-            alt="BLACK AND WHITE PAINTING" /></div>
-        <div className="Lscape2 Lscape">
-            <img className="landscape" src={SA_Family} 
-            alt="BLACK AND WHITE PAINTING" /></div>
+        {art.grayPaintings.grayPaintingsPortrait.map((image, id) =>(
+            <ImageDom key={id} name={image} description="BLACK AND WHITE PAINTING" />
+        ))}
+        {art.grayPaintings.grayPaintingsLandscape.map((image, id) =>(
+            <ImageDom key={id} name={image} description="BLACK AND WHITE PAINTING"
+             landscape={true} />
+        ))}
     </div>
     </>
-)
+)}
+
+const ImageDom = (props)=>{
+    const start= props.name.indexOf("_") + 1
+    const end = props.name.indexOf("_", start)
+    const name = props.name.slice(start,end)
+    const editName = name.replace(/-/, " ")
+
+    return(  
+        <div className={props.landscape? "Lscape1 Lscape": ""}>
+            <img className={props.landscape? "landscape": ""} 
+                src={props.name} alt={props.description}/>
+            <br />
+                <span>{editName}</span>
+                <div className="link-btns images-btns d-flex flex-column">
+                    <Link to="/journeyimages" role="button" preventScrollReset={false}
+                    state={{name: editName}}>View The Journey</Link>    
+                </div>
+        </div>   
+    )
+}
+
+export const JourneyImages = (props) =>{
+    const {state} = useLocation()
+    console.log(useLocation());
+    const name = state.name
+    const varName = name.replace(" ", "")
+    const navigate= useNavigate()
+    
+    return(
+    <>
+        <div>
+            <section className="gallery-section">
+                <div className="gallery-img">
+                    <h3 className="art-type">Step by Step Drawing Journey for {name} </h3>
+                    <div className="gallery-images">
+                        {names[varName]? names[varName].map((image,id) =>(
+                            <div key={id}><img  src={image} alt="COLORED DRAWING" /></div>
+                        )): <div ><h3>We apologize, step by step journey for {name} art
+                        is not available at the moment. Keep on enjoying more of Golden Arts.
+                        Thank You. </h3></div>}
+                    </div> 
+                    <button onClick={() => navigate(-1)} className="btn-cart">Go Back</button>
+                </div>     
+            </section>   
+        </div> 
+    </>
+    )
+}

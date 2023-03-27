@@ -89,15 +89,15 @@ export class Commission extends React.Component{
                                     <p className="p-t in-t"><strong>For black and white drawings(pencil on paper)</strong></p>
                                     {/* <!-- <p className="in-t"><strong>Investment</strong></p> --> */}
                                     <p id="g-A4" onClick={this.handleOrder}><strong>A4 size</strong>(30 by 21cm) is 
-                                        <strong> Ksh.3,000/=</strong> <button className="order-btn btn-cart" 
+                                        <strong> Ksh.3,000/=</strong> <button className="btn-cart" 
                                          >ORDER A4</button></p>
                                     <p id="g-A3" onClick={this.handleOrder}><strong>A3 size</strong>(42 by 30cm) is 
-                                        <strong> Ksh.4,500/=</strong> <button className="order-btn btn-cart"
+                                        <strong> Ksh.4,500/=</strong> <button className="btn-cart"
                                          >ORDER A3</button></p>
                                     <p className="p-t in-t" style={{marginTop: "1.5rem"}}>
                                         <strong>For black and White painting(oil on canvas) </strong> </p>
                                     <p id="g-A2" onClick={this.handleOrder}><strong>A2 size</strong>(60 by 42cm) is 
-                                        <strong> Ksh.7,500/=</strong> <button className="order-btn btn-cart"
+                                        <strong> Ksh.7,500/=</strong> <button className="btn-cart"
                                          >ORDER A2</button></p>  
                                 </div>
                             </div>
@@ -109,10 +109,10 @@ export class Commission extends React.Component{
                                     <p className="p-t in-t"><strong>For coloured paintings(oil on canvas) </strong> </p>
                                     {/* <!-- <p className="in-t"><strong>Investment</strong></p> --> */}
                                     <p id="c-A3" onClick={this.handleOrder}><strong>A3 size</strong>(42 by 30cm) is 
-                                        <strong> Ksh.6,000/=</strong> <button className="order-btn btn-cart"
+                                        <strong> Ksh.6,000/=</strong> <button className="btn-cart"
                                          >ORDER A3</button></p>
                                     <p id="c-A2" onClick={this.handleOrder}><strong>A2 size</strong>(60 by 42cm) is 
-                                        <strong> Ksh.9,000/=</strong> <button className="order-btn btn-cart"
+                                        <strong> Ksh.9,000/=</strong> <button className="btn-cart"
                                          >ORDER A2</button></p>
                                     <p className="drk">Incase you're unable to order, need a customized size or painting 
                                         other than portraits, contact
