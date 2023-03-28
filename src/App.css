@@ -79,7 +79,7 @@ body{
   margin: 1rem 0;
 }
 .images-btns{
-  margin: 0 auto 1rem auto ;
+  margin: auto ;
   width: 20rem;
 }
 .link-btns > *{
@@ -395,7 +395,7 @@ li> a:hover::after{
 .gallery-images img{
   width: 22rem;
   height: 30rem;
-  margin-top: 1rem;
+  margin-top: 2.5rem;
   border: 2px solid rgb(192, 190, 190);
 }
 .landscape{
@@ -650,6 +650,12 @@ li> a:hover::after{
   letter-spacing: 2px;
   margin: 1rem 0 2rem 0;
   border: 2px solid var(--clr-grey-8);
+}
+.btn-ctr{
+  width: 80%;
+  margin: auto;
+  line-height: 5vh;
+  text-align: center;
 }
 .btn-cart:hover{
   background-color:var(--clr-grey-6) ;

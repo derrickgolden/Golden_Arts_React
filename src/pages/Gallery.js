@@ -100,11 +100,13 @@ export const JourneyImages = (props) =>{
                     <div className="gallery-images">
                         {names[varName]? names[varName].map((image,id) =>(
                             <div key={id}><img  src={image} alt="COLORED DRAWING" /></div>
-                        )): <div ><h3>We apologize, step by step journey for {name} art
+                        )): <div className='btn-ctr'><h3>We apologize, step by step journey for {name} art
                         is not available at the moment. Keep on enjoying more of Golden Arts.
                         Thank You. </h3></div>}
                     </div> 
-                    <button onClick={() => navigate(-1)} className="btn-cart">Go Back</button>
+                    <div className='btn-ctr'>
+                        <button onClick={() => navigate(-1)} className="btn-cart">Go Back</button>
+                    </div>
                 </div>     
             </section>   
         </div> 
