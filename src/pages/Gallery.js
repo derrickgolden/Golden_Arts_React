@@ -26,11 +26,12 @@ const Colored = (props) =>{
     <h3 className="art-type">COLORED PAINTINGS</h3>
     <div className="gallery-images">
         {art.coloredPaintings.colPaintingsPortrait.map((image,id) =>(
-            <ImageDom key={id} name = {image} description ="COLORED DRAWING" />
+            <ImageDom key={id} name = {image} description ="COLORED DRAWING" 
+             journeyBtn={false}/>
         ))}
         {art.coloredPaintings.colPaintingsLandscape.map((image, id) =>(
             <ImageDom key={id} name={image} description="COLORED PAINTING"
-             landscape={true} />
+             journeyBtn={false} landscape={true} />
         ))}
     </div>
 </>
@@ -44,17 +45,18 @@ const Gray = (props) =>{
     <div className="gallery-images">
         {art.grayDrawings.map((image,id) =>(
             <ImageDom key={id} name = {image} description ="BLACK AND WHITE DRAWING" 
-            handleJourneyImages ={props.handleJourneyImages}/>
+            handleJourneyImages ={props.handleJourneyImages} journeyBtn={true}/>
         ))}
     </div>
     <h3 className="art-type">BLACK AND WHITE PAINTING(GRAY)</h3>
     <div className="gallery-images">
         {art.grayPaintings.grayPaintingsPortrait.map((image, id) =>(
-            <ImageDom key={id} name={image} description="BLACK AND WHITE PAINTING" />
+            <ImageDom key={id} name={image} description="BLACK AND WHITE PAINTING" 
+            journeyBtn={false}/>
         ))}
         {art.grayPaintings.grayPaintingsLandscape.map((image, id) =>(
             <ImageDom key={id} name={image} description="BLACK AND WHITE PAINTING"
-             landscape={true} />
+             landscape={true} journeyBtn={false}/>
         ))}
     </div>
     </>
@@ -72,10 +74,12 @@ const ImageDom = (props)=>{
                 src={props.name} alt={props.description}/>
             <br />
                 <span>{editName}</span>
+                {props.journeyBtn? 
                 <div className="link-btns images-btns d-flex flex-column">
                     <Link to="/journeyimages" role="button" preventScrollReset={false}
                     state={{name: editName}}>View The Journey</Link>    
-                </div>
+                </div>:
+                null }
         </div>   
     )
 }

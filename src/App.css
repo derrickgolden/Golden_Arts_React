@@ -543,8 +543,6 @@ li> a:hover::after{
   background-color: var(--clr-grey-10);
   margin: 1rem 0;
 }
-.direct-contact{
-}
 .direct a{
   color: var(--clr-grey-4);
 }

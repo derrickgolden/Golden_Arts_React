@@ -1,6 +1,6 @@
 import React from 'react'
 import daisy from './images/gray/sm_daisy_nose_inc.jpg'
-import couple from './images/colored/sm_couple_col_inc.jpg'
+import couple from './images/colored/sm_Love-Wins_inc.jpg'
 import { Link } from 'react-router-dom'
 import { getSavedOrders } from './Cart'
 
@@ -38,15 +38,12 @@ export class Commission extends React.Component{
         if(value && value > 0){
             const {type, aSize, price} = this.state.cost
             let subTotal = price + ((value-1)*500);
-            console.log(price)
             this.setState(Object.assign({},this.state,{num: 'num', blur: ''}))
-            console.log(this.state)
             
             let orderInfo = getSavedOrders().orders || [];
             const id = new Date().getTime().toString();
             let info ={size: aSize, type_art:type, people: persons, price: subTotal}
             let details = {id, info}
-            console.log(orderInfo)
             orderInfo.push(details)
             
             // let dom = this.createDom(details);

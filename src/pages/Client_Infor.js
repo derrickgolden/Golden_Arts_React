@@ -57,7 +57,8 @@ const ContactForm = (props) =>{
                 axios
                     .post("http://localhost:8080/send_email",{
                     no, name, orders
-                }).then(()=> {
+                }).then((data)=> {
+                    console.log(data);
                     localStorage.removeItem("newdom")
                     updateCart(0);
                     clearTimeout(submitDelay);
