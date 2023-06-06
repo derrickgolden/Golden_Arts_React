@@ -68,10 +68,10 @@ export class Commission extends React.Component{
     
 
     render(){
-        let className = this.state.blur += " outer-body"
+        let classname = `${this.state.blur} outer-body`
         return(
             <>
-            <div className={className} >
+            <div className={classname} >
                 <div className="commission-section">
                     <div className="prices">
                         <p className="inner-content">The total investment when ordering art 

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.2dc91344.css",
-    "main.js": "/static/js/main.5631e1f6.js",
+    "main.css": "/static/css/main.05eedc49.css",
+    "main.js": "/static/js/main.94ecf7ee.js",
     "static/js/787.a73438cc.chunk.js": "/static/js/787.a73438cc.chunk.js",
     "static/media/DSCN0115.JPG": "/static/media/DSCN0115.b7ef87e604457e44ca93.JPG",
     "static/media/DSCN0070.JPG": "/static/media/DSCN0070.2e4ed3b535fe5087f09c.JPG",
@@ -39,7 +39,6 @@
     "static/media/sm_Family-Balance_paint_comp.jpg": "/static/media/sm_Family-Balance_paint_comp.1af56872ec8b94e21476.jpg",
     "static/media/sm_daisy_nose_inc.jpg": "/static/media/sm_daisy_nose_inc.4e5a9522e5da2490af0e.jpg",
     "static/media/sm_The-Smile_comp.jpg": "/static/media/sm_The-Smile_comp.4c5618c5a4843c6e1469.jpg",
-    "static/media/Artist_photo.jpg": "/static/media/Artist_photo.dbcfda38e331ec7c144f.jpg",
     "static/media/sm_Gentle-Man_paint_comp.jpg": "/static/media/sm_Gentle-Man_paint_comp.bcfee054aee84c5eee30.jpg",
     "static/media/sm_Sun-Kissed_paint_comp.jpg": "/static/media/sm_Sun-Kissed_paint_comp.0c713c3a35c9339cbb48.jpg",
     "static/media/sm_Dad-Son_paint_complete.jpg": "/static/media/sm_Dad-Son_paint_complete.3b518221558e9582545e.jpg",
@@ -47,12 +46,12 @@
     "static/media/sm_Wall-View_col.jpg": "/static/media/sm_Wall-View_col.b823c106442653b59e38.jpg",
     "static/media/sm_Innocent-Danger_col.jpg": "/static/media/sm_Innocent-Danger_col.f9bdee67e9ce04db3b4d.jpg",
     "index.html": "/index.html",
-    "main.2dc91344.css.map": "/static/css/main.2dc91344.css.map",
-    "main.5631e1f6.js.map": "/static/js/main.5631e1f6.js.map",
+    "main.05eedc49.css.map": "/static/css/main.05eedc49.css.map",
+    "main.94ecf7ee.js.map": "/static/js/main.94ecf7ee.js.map",
     "787.a73438cc.chunk.js.map": "/static/js/787.a73438cc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2dc91344.css",
-    "static/js/main.5631e1f6.js"
+    "static/css/main.05eedc49.css",
+    "static/js/main.94ecf7ee.js"
   ]
 }

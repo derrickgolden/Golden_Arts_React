@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, Routes, Route } from 'react-router-dom'
-import { LandingPage } from './Landing_page' 
+// import { LandingPage } from './Landing_page' 
 import { Gallery } from './Gallery'
 import { Biography } from './Biography'
 import { Commission } from './Commission'
@@ -27,12 +27,10 @@ export class Header extends React.Component{
     render(){
         return(
             <>
-            {/* <OrderTotalContext.Provider value = {this.state}> */}
                 <div className="gallery-container">
                     <NavBarr height={this.state.height}  orderTotal={this.state.orderTotal}/>
                 </div>
                 <Routes>
-                    <Route path='/home' element={<LandingPage />} />
                     <Route path='/' element={<Gallery artType="gray"/>} />
                     <Route path='/gallery' >
                         <Route path='gray' element={<Gallery artType="gray"/>} />
@@ -52,14 +50,12 @@ export class Header extends React.Component{
                 </Routes>
                 {/* <!-- social media links --> */}
                 <footer className="footer-socials" > { <Footer />}</footer>
-            {/* </OrderTotalContext.Provider> */}
             </>
         )
     }
 }
 
 const NavBarr = (props) =>{
-
     const [toggleMenu, setToggleMenu] = React.useState({toggle: "toggle"})
     const onShowMenu = () =>{
         setToggleMenu({toggle: ""})
@@ -67,7 +63,6 @@ const NavBarr = (props) =>{
     const onHideMenu = () =>{
         setToggleMenu({toggle: "toggle"})
     }
-    let screenWidth = window.screen.width
 
     return(
         <header className="home-container">
@@ -83,11 +78,8 @@ const NavBarr = (props) =>{
                         <nav style = {{top:`69px`}} className={toggleMenu.toggle}>
                             <i className="fa-solid fa-xmark cancel s-all"
                                 onClick={onHideMenu}></i>
-                <ul>
-                    {screenWidth > 640? null :
-                        <li><Link to="/" role="button" reloadDocument
-                        onClick={onHideMenu} >HOME</Link></li> }      
-                        <GallaryToggle onHandleHideMenu={onHideMenu}/>
+                <ul>     
+                    <GallaryToggle onHandleHideMenu={onHideMenu}/>
                     <li><Link to="/biography" role="button"
                         onClick={onHideMenu} >BIOGRAPHY</Link></li>
                     <li><Link to="/commission" role="button"

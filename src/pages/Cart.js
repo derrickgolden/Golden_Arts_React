@@ -14,14 +14,13 @@ export class Cart extends React.Component{
         this.ordersDom()   
     }
     populateOrders(cartDom){
-        this.state.orders.map((info)=>{
+        const cartOrders = this.state.orders.map((info)=>{
             let dom = createDom(info);
             dom.querySelector("#remove").addEventListener("click", (e) =>{
                 let tbl = e.currentTarget.parentElement.parentElement.parentElement;
                 let allOrders = this.state.orders;
                 allOrders = allOrders.filter(order => order.id !== tbl.id)
                 localStorage.setItem("newdom",JSON.stringify(allOrders));
-                // sessionStorage.setItem("revCart",JSON.stringify(true));
                 this.props.updateTotalOrders(allOrders.length)
                 this.setState({orders: allOrders, notification: 
                     {content: <p>One item removed!</p>, classname: "", 
@@ -31,12 +30,15 @@ export class Cart extends React.Component{
                         {content: "", classname: "note", backgrdColor:""}})
                 },3000)
             })
-            cartDom.appendChild(dom);
-        })  
+            return dom;
+        })
+        for(let order of cartOrders){
+            cartDom.appendChild(order);  
+        }
     }
     ordersDom(){
-        let dom;
-        if(dom = document.body.querySelector('.inner-cart')){
+        let dom = document.body.querySelector('.inner-cart');
+        if(dom){
             dom.innerHTML = null
             this.populateOrders(dom);
         }
@@ -99,10 +101,7 @@ const createDom = ({id,info}) => {
         return dom
     }
 
-    let total = 0;
     let {size,type_art,people,price} = info;
-    total += price;
-    // document.body.querySelector("#subtotal").innerHTML = total;
     return elt("table",{class: "table", id: id},
         elt("tr",null,elt("th",{class: "t-head"},type_art),
         elt("td",{class: "t-head",style:"text-align: right;"},
