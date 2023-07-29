@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useRef, useLayoutEffect, useState} from 'react'
 import daisy from './images/gray/sm_daisy_nose_inc.jpg'
 import couple from './images/colored/sm_Love-Wins_inc.jpg'
 import { Link } from 'react-router-dom'
@@ -7,8 +7,10 @@ import { getSavedOrders } from './Cart'
 export class Commission extends React.Component{
     constructor(props){
         super(props)
+        this.myRef = React.createRef()
         this.state = {num: 'num', blur: '', cost:{type: "", aSize:"", price: 0},
-                        notification: {content: "", classname: "note", backgrdColor:""}}
+                        notification: {content: "", classname: "note", backgrdColor:""},
+                        cursorPst: {y: "20", x: "8"}, }
 
         this.handleOrder = this.handleOrder.bind(this); 
         this.removeFormOrder = this.removeFormOrder.bind(this);
@@ -18,13 +20,15 @@ export class Commission extends React.Component{
         // handling the size and cost
         const size = {'g-A4':3000, 'g-A3':4500, 'g-A2':7500, 'c-A3':6000, 'c-A2':9000};
         const artType ={c: "COLORED PAINTING",g: "BLACK AND WHITE PAINTING"}
-
+        
         let id = e.currentTarget.id;
         let type = artType[id.slice(0,1)]
         let aSize = id.slice(2)
         let price = size[id]
+        const {left} = this.myRef.current.getBoundingClientRect()
         this.setState(state =>({
-            ...state, num: '', blur: 'blur', cost:{type, aSize, price}
+            ...state, num: '', blur: 'blur', cost:{type, aSize, price}, 
+            cursorPst: {y: e.clientY, x: left}
         }))
     }
     cancelOrder(){
@@ -62,10 +66,8 @@ export class Commission extends React.Component{
                     classname: "note", backgrdColor:""}
                 })})
             },3000)
-            // notification(`<p>Added to Cart</p>`,"rgb(180, 216, 180)");
         }
     }
-    
 
     render(){
         let classname = `${this.state.blur} outer-body`
@@ -83,19 +85,25 @@ export class Commission extends React.Component{
                             <div className="price">
                                 <img src= {daisy} alt="" />
                                 <div className="cost">
-                                    <p className="p-t in-t"><strong>For black and white drawings(pencil on paper)</strong></p>
-                                    {/* <!-- <p className="in-t"><strong>Investment</strong></p> --> */}
-                                    <p id="g-A4" onClick={this.handleOrder}><strong>A4 size</strong>(30 by 21cm) is 
-                                        <strong> Ksh.3,000/=</strong> <button className="btn-cart" 
-                                         >ORDER A4</button></p>
-                                    <p id="g-A3" onClick={this.handleOrder}><strong>A3 size</strong>(42 by 30cm) is 
-                                        <strong> Ksh.4,500/=</strong> <button className="btn-cart"
-                                         >ORDER A3</button></p>
+                                    <p className="p-t in-t">
+                                        <strong>For black and white drawings(pencil on paper)</strong>
+                                    </p>
+                                    <p id="g-A4" onClick={this.handleOrder}
+                                    ref={this.myRef}>
+                                        <strong>A4 size</strong>(30 by 21cm) is <strong> Ksh.3,000/=</strong> 
+                                        <button className="btn-cart" >ORDER A4</button>
+                                    </p>
+                                    <p id="g-A3" onClick={this.handleOrder} >
+                                        <strong>A3 size</strong>(42 by 30cm) is <strong> Ksh.4,500/=</strong> 
+                                        <button className="btn-cart" >ORDER A3</button>
+                                    </p>
                                     <p className="p-t in-t" style={{marginTop: "1.5rem"}}>
-                                        <strong>For black and White painting(oil on canvas) </strong> </p>
-                                    <p id="g-A2" onClick={this.handleOrder}><strong>A2 size</strong>(60 by 42cm) is 
-                                        <strong> Ksh.7,500/=</strong> <button className="btn-cart"
-                                         >ORDER A2</button></p>  
+                                        <strong>For black and White painting(oil on canvas) </strong> 
+                                    </p>
+                                    <p id="g-A2" onClick={this.handleOrder}>
+                                        <strong>A2 size</strong>(60 by 42cm) is <strong> Ksh.7,500/=</strong> 
+                                        <button className="btn-cart" >ORDER A2</button>
+                                    </p>  
                                 </div>
                             </div>
                         </div>
@@ -105,12 +113,14 @@ export class Commission extends React.Component{
                                 <div className="cost">
                                     <p className="p-t in-t"><strong>For coloured paintings(oil on canvas) </strong> </p>
                                     {/* <!-- <p className="in-t"><strong>Investment</strong></p> --> */}
-                                    <p id="c-A3" onClick={this.handleOrder}><strong>A3 size</strong>(42 by 30cm) is 
-                                        <strong> Ksh.6,000/=</strong> <button className="btn-cart"
-                                         >ORDER A3</button></p>
-                                    <p id="c-A2" onClick={this.handleOrder}><strong>A2 size</strong>(60 by 42cm) is 
-                                        <strong> Ksh.9,000/=</strong> <button className="btn-cart"
-                                         >ORDER A2</button></p>
+                                    <p id="c-A3" onClick={this.handleOrder}>
+                                        <strong>A3 size</strong>(42 by 30cm) is <strong> Ksh.6,000/=</strong> 
+                                        <button className="btn-cart">ORDER A3</button>
+                                    </p>
+                                    <p id="c-A2" onClick={this.handleOrder}>
+                                        <strong>A2 size</strong>(60 by 42cm) is <strong> Ksh.9,000/=</strong> 
+                                        <button className="btn-cart">ORDER A2</button>
+                                    </p>
                                     <p className="drk">Incase you're unable to order, need a customized size or painting 
                                         other than portraits, contact
                                         <Link to="/contact">Derrick</Link>
@@ -122,22 +132,42 @@ export class Commission extends React.Component{
                     </div>
                 </div>
             </div>    
-            <NumberOfPersons num={this.state.num} onCancelOrder ={this.cancelOrder}
-            onHandlePersons={this.removeFormOrder}/>
+            <NumberOfPersons 
+                num={this.state.num}
+                cursorPst={this.state.cursorPst} 
+                onCancelOrder ={this.cancelOrder}
+                onHandlePersons={this.removeFormOrder}/>
             </>
         )
     }
 }
 
 const NumberOfPersons = (props) =>{
+    const ref = useRef()
+    const [absolutePst, setAbsolutePst] = useState({top: "20vh", right: "8vw" })
+    useLayoutEffect(()=>{
+        const formHeight = ref?.current?.clientHeight
+        const availHeight = window.screen.availHeight
+        if(availHeight/2 > props.cursorPst.y) {
+            setAbsolutePst({top: `${props.cursorPst.y}px`, 
+                    left: `${props.cursorPst.x}px` })
+        }
+        else setAbsolutePst({top: `${props.cursorPst.y - formHeight}px`, 
+                    left: `${props.cursorPst.x}px`});
+    },[props.cursorPst])
     if(props.num){
         return null;
     }else{
         return(
             <>
-            <form className="number" action="" name="num" onSubmit={props.onHandlePersons} >
-            <i onClick={props.onCancelOrder} 
-                className="fa-solid fa-xmark cancel-pop"></i>
+            <form className="number" action="" name="num" onSubmit={props.onHandlePersons} 
+            ref={ref}
+            style={absolutePst}>
+                <div className='cancel-pop'>
+                    <i onClick={props.onCancelOrder} 
+                        className="fa-solid fa-xmark ">
+                    </i>
+                </div>
                 <p>Number of people you want drawn in a single photo.</p>
                 <input type="number" name="num" id="num" autoFocus
                     placeholder="1 person(s)" required />
@@ -149,7 +179,6 @@ const NumberOfPersons = (props) =>{
     }
 export const Notification = (props) =>{
     const {content, classname, backgrdColor} = props.state;
-    console.log(backgrdColor)
     const classnames = 'notifications' + classname;
     return(
         <div className= {classnames} style={{backgroundColor: backgrdColor}}>

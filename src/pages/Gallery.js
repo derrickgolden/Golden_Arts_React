@@ -86,7 +86,6 @@ const ImageDom = (props)=>{
 
 export const JourneyImages = (props) =>{
     const {state} = useLocation()
-    console.log(useLocation());
     const name = state.name
     const varName = name.replace(" ", "")
     const navigate= useNavigate()
