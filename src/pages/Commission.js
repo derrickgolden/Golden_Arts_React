@@ -83,7 +83,7 @@ export class Commission extends React.Component{
                         </p>
                         <div className="grey">
                             <div className="price">
-                                <img src= {daisy} alt="" />
+                                <img src= {daisy} alt="Kenyan Art Drawing" />
                                 <div className="cost">
                                     <p className="p-t in-t">
                                         <strong>For black and white drawings(pencil on paper)</strong>
@@ -109,7 +109,7 @@ export class Commission extends React.Component{
                         </div>
                         <div className="coloured">
                             <div className="price">
-                                <img src= { couple } alt="" />
+                                <img src= { couple } alt="Family Painting" />
                                 <div className="cost">
                                     <p className="p-t in-t"><strong>For coloured paintings(oil on canvas) </strong> </p>
                                     {/* <!-- <p className="in-t"><strong>Investment</strong></p> --> */}

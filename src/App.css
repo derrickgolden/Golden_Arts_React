@@ -169,8 +169,13 @@ header{
   line-height: 1.8rem;
   /* justify-self: center; */
 }
+h1{
+  font-size: 34px;
+  line-height: 2rem; 
+}
 h2{
   padding: .8rem;
+  line-height: 1.8rem;
 }
 nav{
   position: absolute;

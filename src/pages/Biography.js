@@ -4,62 +4,56 @@ import nyeri from './images/colored/Nyeri_View.jpg'
 import kid from './images/gray/Kid_hand_pic.jpg'
 
 export class Biography extends React.Component{
-    state = {message: null};
-
-    requestApi = () =>{
-    // React.useEffect(() => {
-      fetch("/api")
-        .then((res) => {
-            console.log(res);
-            return res.json()
-        })
-        .then((data) => {
-            console.log(data);
-            this.setState(data);
-        })
-    // }, []);
-  }
+    
     render(){
         return(
             <>
             <div className="bio-container">
                 <section className="bio-section">
-                    <h2 onClick={this.requestApi}>{!this.state.message? "Biography" : this.state.message}</h2>
+                    <h1> Diving into Derrick's World: </h1>
+                    <p>Unveiling the Artistry of a Kenyan Talent. 
+                        Explore the journey, creations, and passion that define the artist behind the name.</p>
                     <div className="about bio-image about-derrick">
                         <img src={photo} alt="" />
                         <div className="about-derrick-text">
                             <h2>About Derrick</h2>
-                            <p>Derrick Nyarangi alias Golden(b. 1995) is a Kenyan Artist based in Nairobi, known 
-                                for his hyperrealistic pencil drawings and oil paintings. Primarily focuses on 
-                                portrait drawings and regularly does paintings of wildlife and landscapes.
+                            <p>Derrick Nyarangi, also known as Golden (born 1995), is a prominent Kenyan Artist located in Nairobi. 
+                                Renowned for his masterful hyperrealistic pencil drawings and captivating oil paintings, 
+                                Derrick's artistic prowess shines. His primary artistic focus revolves around intricate portrait drawings, 
+                                while he also beautifully captures the essence of wildlife and landscapes in his paintings.
                             </p>
                         </div>
                     </div>
                     <div className="bio-image">
                     </div>
                     <div className="mid-banner">
-                        <h4>"Art is a drug am addicted to it. For that reason, I can only do it to perfection at the
-                            bare minimum."
+                        <h4>"Art: My Irresistible Addiction. Like a drug's pull, I'm drawn to it. <br />
+                            This compels me to craft with unwavering precision, striving for nothing less than perfection."
                         </h4>
                         <img src={nyeri} alt="" />
                         <p>Painting of somewhere in Nyeri</p>
                     </div>
                     <div className="journey">
-                        <h2>The Journey</h2>
-                        <p>Golden started drawing close to a decade ago while on campus. He began as a hobby. 
-                            After perfecting his skills, people started requesting a portrait for themselves 
-                            or as a gift for a loved one. A hobby turned into a career.
+                        <h2>From Hobby to Masterful Artistry</h2>
+                        <p style={{marginBottom: "1rem"}}>
+                            Embarking on his artistic journey nearly a decade ago during his campus days, 
+                            Golden's passion for drawing swiftly evolved from a hobby into an extraordinary career. 
+                            With meticulous skill refinement, his artistry began captivating hearts, 
+                            leading to requests for personal and cherished portrait commissions.
                         </p>
-                        <p>His works normally take anywhere from two to seven days to complete depending on
-                            the complexity and the size of the artwork. As he says, "Patience is key"
+                        <p>Crafting each piece is an artful process, often spanning two to seven days, 
+                            sculpted by intricacy and the artwork's dimensions. 
+                            As he aptly asserts, 'Patience becomes the brushstroke of every masterpiece.
                         </p>
                     </div>
                     <div className=" artist-state">
                         <div className="artist-state-text">
-                            <h2>Artist Statement</h2>
-                            <p>Simple things make me happy; a pencil and paper or canvas and brush. This way art 
-                                to me is like music, the pencil is my instrument, the drawing/painting is my song,
-                                and the home the art will hang is my audience. 
+                            <h2>My Artistic Harmony</h2>
+                            <p>"Discovering Happiness in Simplicity: Pencil and Paper, 
+                                Canvas and Brush – My Artistic Symphony. <br />
+                                To me, art resonates like music, where the pencil becomes my instrument, 
+                                the drawing and painting form my melodic composition, and 
+                                the space it adorns becomes the stage for my artistic audience to enjoy." 
                             </p>
                         </div>
                     </div>
